@@ -1,0 +1,649 @@
+/* Global App Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* PWA Install Prompt */
+.install-prompt {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  animation: slideDown 0.3s ease;
+}
+
+.install-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.install-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.close-install {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.close-install:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.loading-spinner {
+  text-align: center;
+  color: #495057;
+  font-size: 1.2rem;
+}
+
+.loading-spinner p {
+  margin-top: 20px;
+}
+
+/* Driver App Layout */
+.driver-app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Side Panel Styles */
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #343a40;
+  color: white;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.side-panel.open {
+  left: 0;
+}
+
+.side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #495057;
+  border-bottom: 1px solid #6c757d;
+}
+
+.side-panel-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.close-panel {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.close-panel:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.side-panel-content {
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid #6c757d;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item.logout-item {
+  color: #dc3545;
+  border-top: 1px solid #6c757d;
+  margin-top: 20px;
+}
+
+.menu-item.logout-item:hover {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.menu-icon {
+  font-size: 1.2rem;
+  width: 20px;
+}
+
+/* Main Dashboard Layout */
+.main-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.main-dashboard.panel-open {
+  margin-left: 300px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn {
+  background: #28a745;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menu-btn:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.driver-info {
+  flex: 1;
+  color: #343a40;
+}
+
+.driver-info h1 {
+  margin: 0 0 5px 0;
+  font-size: 1.8rem;
+}
+
+.driver-info p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+  background: #f8f9fa;
+}
+
+/* Journey Cards */
+.journey-card, .status-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 20px;
+  color: #343a40;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.journey-card h2 {
+  margin: 0 0 25px 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Driver Details in Journey Card */
+.driver-details {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #343a40;
+  font-size: 1.1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #343a40;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: #6c757d;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #28a745;
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.start-journey-btn, .end-journey-btn, .login-btn, .register-btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 20px;
+}
+
+.start-journey-btn, .login-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.start-journey-btn:hover, .login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+}
+
+.register-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+}
+
+.end-journey-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+.end-journey-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+}
+
+/* Journey Status */
+.journey-status {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.journey-status h2 {
+  margin: 15px 0 5px 0;
+  font-size: 1.6rem;
+}
+
+.journey-status p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Journey Info */
+.journey-info {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.info-value {
+  font-weight: 600;
+}
+
+/* Location Display */
+.location-display {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.location-display h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.location-details p {
+  margin: 5px 0;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+/* Last Update */
+.last-update {
+  text-align: center;
+  margin: 15px 0;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Pulse Indicator */
+.pulse-indicator {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+}
+
+.pulse {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #28a745;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+  }
+  
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* Error Messages */
+.error-message {
+  background: rgba(220, 53, 69, 0.2);
+  color: #721c24;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Success Messages */
+.success-message {
+  background: rgba(40, 167, 69, 0.2);
+  color: #155724;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(40, 167, 69, 0.5);
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.toggle-link {
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toggle-link:hover {
+  color: #28a745;
+  text-decoration: underline;
+}
+
+/* Login Page Layout */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 15px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #343a40;
+}
+
+.login-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.login-card p {
+  text-align: center;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Button disabled state */
+.login-btn:disabled, .register-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-btn:disabled:hover, .register-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Overlay when side panel is open */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-dashboard.panel-open {
+    margin-left: 0;
+  }
+  
+  .side-panel {
+    width: 280px;
+  }
+  
+  .dashboard-header {
+    padding: 15px;
+  }
+  
+  .dashboard-content {
+    padding: 20px;
+  }
+  
+  .journey-card, .status-card {
+    padding: 20px;
+  }
+  
+  .driver-info h1 {
+    font-size: 1.5rem;
+  }
+  
+  .login-card {
+    padding: 30px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-panel {
+    width: 100vw;
+    left: -100vw;
+  }
+  
+  .side-panel.open {
+    left: 0;
+  }
+  
+  .dashboard-header {
+    padding: 12px;
+  }
+  
+  .dashboard-content {
+    padding: 15px;
+  }
+  
+  .journey-card, .status-card {
+    padding: 15px;
+  }
+  
+  .login-card {
+    padding: 25px;
+  }
+}
