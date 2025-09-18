@@ -14,7 +14,9 @@ app.use(cors({
     'http://localhost:3000', 'http://127.0.0.1:3000',
     'http://localhost:3001', 'http://127.0.0.1:3001',
     'http://localhost:3002', 'http://127.0.0.1:3002',
-    'http://192.168.0.155:3000', 'http://192.168.0.155:3001', 'http://192.168.0.155:3002'
+    'http://192.168.0.155:3000', 'http://192.168.0.155:3001', 'http://192.168.0.155:3002',
+    'https://hyderabad-tsrtc-user-app.onrender.com',
+    'https://hyderabad-tsrtc-driver-app.onrender.com'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -32,11 +34,29 @@ app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-})
-.catch((err) => console.error('MongoDB connection error:', err));
+// For Render deployment - start server without MongoDB requirement
+if (process.env.NODE_ENV === 'production') {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚌 RTC Backend running on port ${PORT} (Production)`);
+    console.log(`📍 Health check: https://hyderabad-tsrtc-backend.onrender.com`);
+  });
+} else {
+  // Development mode - connect to MongoDB
+  mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/rtc-tracking', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚌 RTC Backend running on port ${PORT} (Development)`);
+      console.log(`📍 Health check: http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('MongoDB connection failed:', err);
+    // Start server anyway for development
+    app.listen(PORT, () => {
+      console.log(`🚌 RTC Backend running on port ${PORT} (No Database)`);
+    });
+  });
+}
