@@ -37,29 +37,84 @@ app.get('/', (req, res) => {
 
 // Simple driver login endpoint (no database required)
 app.post('/api/auth/login', (req, res) => {
-  const { driverName, busNumber } = req.body;
+  const { phone, password, driverName, busNumber } = req.body;
   
-  if (!driverName || !busNumber) {
-    return res.status(400).json({ 
-      success: false, 
-      message: 'Driver name and bus number are required' 
+  // Handle both phone/password login and driverName/busNumber login
+  if (phone && password) {
+    // Phone-based login (from your driver app)
+    const driver = {
+      id: Date.now(),
+      name: `Driver-${phone.slice(-4)}`,
+      phone: phone,
+      busNumber: `BUS-${Math.floor(Math.random() * 100)}`,
+      route: `Route for Driver ${phone}`,
+      status: 'active',
+      loginTime: new Date().toISOString(),
+      token: `token-${Date.now()}`
+    };
+    
+    return res.json({ 
+      success: true, 
+      message: 'Login successful',
+      driver: driver,
+      token: driver.token
     });
   }
   
-  // Simulate successful login
+  if (driverName && busNumber) {
+    // Traditional driverName/busNumber login
+    const driver = {
+      id: Date.now(),
+      name: driverName,
+      busNumber: busNumber,
+      route: `Route for Bus ${busNumber}`,
+      status: 'active',
+      loginTime: new Date().toISOString(),
+      token: `token-${Date.now()}`
+    };
+    
+    return res.json({ 
+      success: true, 
+      message: 'Login successful',
+      driver: driver,
+      token: driver.token
+    });
+  }
+  
+  return res.status(400).json({ 
+    success: false, 
+    message: 'Either phone/password or driverName/busNumber are required' 
+  });
+});
+
+// Simple driver registration endpoint
+app.post('/api/auth/register', (req, res) => {
+  const { name, phone, password } = req.body;
+  
+  if (!name || !phone || !password) {
+    return res.status(400).json({ 
+      success: false, 
+      message: 'Name, phone, and password are required' 
+    });
+  }
+  
+  // Simulate successful registration
   const driver = {
     id: Date.now(),
-    name: driverName,
-    busNumber: busNumber,
-    route: `Route for Bus ${busNumber}`,
+    name: name,
+    phone: phone,
+    busNumber: `BUS-${Math.floor(Math.random() * 100)}`,
+    route: `Route for ${name}`,
     status: 'active',
-    loginTime: new Date().toISOString()
+    registrationTime: new Date().toISOString(),
+    token: `token-${Date.now()}`
   };
   
   res.json({ 
     success: true, 
-    message: 'Login successful',
-    driver: driver
+    message: 'Registration successful',
+    driver: driver,
+    token: driver.token
   });
 });
 
