@@ -16,17 +16,62 @@ app.use(cors({
     'http://localhost:3002', 'http://127.0.0.1:3002',
     'http://192.168.0.155:3000', 'http://192.168.0.155:3001', 'http://192.168.0.155:3002',
     'https://hyderabad-tsrtc-user-app.onrender.com',
-    'https://hyderabad-tsrtc-driver-app.onrender.com'
+    'https://hyderabad-tsrtc-driver-app.onrender.com',
+    /\.onrender\.com$/
   ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 app.use(express.json());
 
 // Welcome route
 app.get('/', (req, res) => {
-  res.json({ message: 'RTC Bus Tracking API is running!' });
+  res.json({ 
+    message: 'RTC Bus Tracking API is running!', 
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    endpoints: ['/api/auth/login', '/api/buses/locations']
+  });
+});
+
+// Simple driver login endpoint (no database required)
+app.post('/api/auth/login', (req, res) => {
+  const { driverName, busNumber } = req.body;
+  
+  if (!driverName || !busNumber) {
+    return res.status(400).json({ 
+      success: false, 
+      message: 'Driver name and bus number are required' 
+    });
+  }
+  
+  // Simulate successful login
+  const driver = {
+    id: Date.now(),
+    name: driverName,
+    busNumber: busNumber,
+    route: `Route for Bus ${busNumber}`,
+    status: 'active',
+    loginTime: new Date().toISOString()
+  };
+  
+  res.json({ 
+    success: true, 
+    message: 'Login successful',
+    driver: driver
+  });
+});
+
+// Simple bus locations endpoint
+app.get('/api/buses/locations', (req, res) => {
+  res.json({
+    success: true,
+    buses: [
+      { busNumber: '5K', location: 'Secunderabad', status: 'active' },
+      { busNumber: '8A', location: 'Ameerpet', status: 'active' }
+    ]
+  });
 });
 
 app.use('/api/buses', busRoutes);
