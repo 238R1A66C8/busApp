@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚌 Hyderabad TSRTC Bus Tracking System
 
 A complete bus tracking system for Hyderabad TSRTC with user app, driver app, and backend API.
@@ -141,3 +142,6 @@ For support and questions:
 ---
 
 **Made with ❤️ for Hyderabad commuters**
+=======
+# busApp
+>>>>>>> f3854d96aeb8332196038fdee98c964e1084de85
