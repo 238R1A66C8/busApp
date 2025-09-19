@@ -7,8 +7,9 @@
 
 body, html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+  color: #333;
 }
 
 .app {
@@ -17,37 +18,99 @@ body, html {
   overflow-x: hidden;
 }
 
+/* Enhanced Button Styles */
+.btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Card Styles */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Input Styles */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: #f8f9ff;
+  transform: translateY(-1px);
+}
+
 /* PWA Install Prompt */
 .install-prompt {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
   color: white;
-  padding: 10px 15px;
-  border-radius: 25px;
+  padding: 15px 20px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   z-index: 1001;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   animation: slideDown 0.3s ease;
 }
 
 .install-btn {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
-  padding: 8px 15px;
-  border-radius: 15px;
+  padding: 10px 18px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.2s;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .install-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .close-install {
@@ -98,7 +161,7 @@ body, html {
 /* Driver App Layout */
 .driver-app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -249,19 +312,25 @@ body, html {
 
 /* Journey Cards */
 .journey-card, .status-card {
-  background: #ffffff;
-  border: 1px solid #e9ecef;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 30px;
   margin-bottom: 20px;
-  color: #343a40;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #333;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .journey-card h2 {
   margin: 0 0 25px 0;
   font-size: 1.8rem;
   text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 /* Driver Details in Journey Card */
@@ -534,28 +603,34 @@ body, html {
 }
 
 .login-card {
-  background: #ffffff;
-  border: 1px solid #e9ecef;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 40px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  color: #343a40;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  color: #333;
 }
 
 .login-card h1 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .login-card p {
   text-align: center;
   margin-bottom: 30px;
-  opacity: 0.9;
+  opacity: 0.8;
   font-size: 1.1rem;
+  color: #555;
 }
 
 /* Button disabled state */
