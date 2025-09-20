@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">RTC Bus Tracking</string>
+<?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?>
+
+<resources><resources>
+
+    <string name="app_name">Hyderabad TSRTC</string>    <string name="app_name">RTC Bus Tracking</string>
+
+    <string name="title_activity_main">Hyderabad TSRTC</string></resources>
+    <string name="package_name">com.tsrtc.hyderabad.userapp</string>
+    <string name="custom_url_scheme">com.tsrtc.hyderabad.userapp</string>
 </resources>

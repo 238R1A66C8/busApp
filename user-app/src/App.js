@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
-import './App.css';
+import './AppClean.css';
 import BusRouteMap from './components/BusRouteMap';
 
 // Map Page Component
@@ -14,7 +14,19 @@ function MapPage() {
   return (
     <div className="map-page-container">
       <div className="map-page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>🗺️ {routeName}</h1>
         <div className="route-info-header">
           <span className="route-badge-header">{routeId}</span>
@@ -88,7 +100,19 @@ function ProfilePage() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>👤 Profile Management</h1>
       </div>
       <div className="page-content">
@@ -148,12 +172,43 @@ function ProfilePage() {
           
           <div className="profile-actions">
             {editMode ? (
-              <>
-                <button className="profile-btn primary" onClick={handleSave}>Save Changes</button>
-                <button className="profile-btn secondary" onClick={() => setEditMode(false)}>Cancel</button>
-              </>
+              <div style={{display: 'flex', gap: '10px', width: '100%'}}>
+                <button style={{
+                  flex: '1', 
+                  background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                  color: 'white',
+                  padding: '10px 15px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  cursor: 'pointer'
+                }} onClick={handleSave}>💾 Save</button>
+                <button style={{
+                  flex: '1',
+                  background: '#f0f0f0',
+                  color: '#333',
+                  padding: '10px 15px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  cursor: 'pointer'
+                }} onClick={() => setEditMode(false)}>❌ Cancel</button>
+              </div>
             ) : (
-              <button className="profile-btn primary" onClick={() => setEditMode(true)}>✏️ Edit Profile</button>
+              <button style={{
+                background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                border: 'none',
+                fontWeight: '600',
+                fontSize: '14px',
+                cursor: 'pointer',
+                width: '100%',
+                maxWidth: '200px'
+              }} onClick={() => setEditMode(true)}>✏️ Edit</button>
             )}
           </div>
         </div>
@@ -163,10 +218,20 @@ function ProfilePage() {
           <h3>🛠️ Account Settings</h3>
           <div className="profile-settings-item">
             <label>🔐 Change Password</label>
-            <button className="profile-btn secondary">Change</button>
+            <button style={{
+              background: '#f0f0f0',
+              color: '#333',
+              padding: '8px 15px',
+              borderRadius: '6px',
+              border: 'none',
+              fontWeight: '600',
+              fontSize: '13px',
+              cursor: 'pointer',
+              minWidth: '80px'
+            }}>Change</button>
           </div>
           <div className="profile-settings-item">
-            <label>� Email Notifications</label>
+            <label>📧 Email Notifications</label>
             <label className="toggle">
               <input type="checkbox" defaultChecked />
               <span className="slider"></span>
@@ -208,9 +273,24 @@ function ProfilePage() {
                 <small>Show to conductor</small>
               </div>
             </div>
-            <div className="profile-actions" style={{marginTop: '15px'}}>
-              <button className="profile-btn" style={{background: 'rgba(255,255,255,0.2)', color: 'white', border: '1px solid rgba(255,255,255,0.3)'}}>
-                Renew Pass
+            <div style={{marginTop: '15px', display: 'flex', justifyContent: 'center'}}>
+              <button style={{
+                background: 'rgba(255, 255, 255, 0.25)',
+                color: 'white',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                fontWeight: '600',
+                fontSize: '14px',
+                cursor: 'pointer',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                width: '100%',
+                maxWidth: '200px'
+              }}>
+                🔄 Renew Pass
               </button>
             </div>
           </div>
@@ -258,23 +338,125 @@ function SavedRoutesPage() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>⭐ Saved Routes</h1>
       </div>
       <div className="page-content">
-          <div className="routes-grid">
-            {savedRoutes.map((route) => (
-              <div key={route.id} className="route-card" onClick={() => navigate(`/map?route=${route.id}&name=${encodeURIComponent(route.name)}`)}>
-                <div className="route-info">
-                  <span className="route-number">{route.id}</span>
-                  <div>
-                    <div className="route-name">{route.name}</div>
-                    <div className="route-details">{route.duration} • {route.fare}</div>
+          <div className="profile-edit-section">
+            <h3 style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#2c3e50',
+              fontSize: '1.3rem',
+              fontWeight: '700',
+              marginBottom: '1.2rem'
+            }}>
+              <span>⭐</span>
+              <span>Your Favorite Routes</span>
+            </h3>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gap: '15px'
+            }}>
+              {savedRoutes.map((route) => (
+                <div key={route.id} 
+                  style={{
+                    background: 'white',
+                    borderRadius: '12px',
+                    boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+                    padding: '16px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(102, 126, 234, 0.15)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                  onClick={() => navigate(`/map?route=${route.id}&name=${encodeURIComponent(route.name)}`)}>
+                  
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'linear-gradient(135deg, #667eea, #764ba2)' }}></div>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: '700',
+                      fontSize: '16px'
+                    }}>{route.id}</div>
+                    
+                    <div>
+                      <div style={{
+                        fontWeight: '600',
+                        fontSize: '1rem',
+                        color: '#333',
+                        marginBottom: '4px'
+                      }}>{route.name}</div>
+                      <div style={{
+                        fontSize: '0.85rem',
+                        color: '#666',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        <span>⏱️ {route.duration}</span>
+                        <span>•</span>
+                        <span>💰 {route.fare}</span>
+                      </div>
+                    </div>
                   </div>
+                  
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'rgba(76, 175, 80, 0.1)',
+                    color: '#4CAF50',
+                    padding: '4px 10px',
+                    borderRadius: '20px',
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    height: 'fit-content'
+                  }}>🟢 Active</div>
                 </div>
-                <div className="route-status">🟢 Active</div>
-              </div>
-            ))}
+              ))}
+            </div>
+            
+            <div style={{ marginTop: '24px', textAlign: 'center' }}>
+              <button style={{
+                background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                color: 'white',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '10px',
+                fontWeight: '600',
+                fontSize: '14px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
+              }} onClick={() => navigate('/')}>
+                🔍 Find New Routes
+              </button>
+            </div>
           </div>
       </div>
     </div>
@@ -295,27 +477,143 @@ function RecentTripsPage() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>🕐 Recent Trips</h1>
       </div>
       <div className="page-content">
-          <div className="trips-list">
-            {recentTrips.map((trip) => (
-              <div key={trip.id} className="trip-card">
-                <div className="trip-route">
-                  <span className="route-badge">{trip.route}</span>
-                  <div className="trip-path">
-                    <span>{trip.from}</span>
-                    <span className="trip-arrow">→</span>
-                    <span>{trip.to}</span>
+          <div className="profile-edit-section">
+            <h3 style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#2c3e50',
+              fontSize: '1.3rem',
+              fontWeight: '700',
+              marginBottom: '1.2rem'
+            }}>
+              <span>🚌</span>
+              <span>Your Travel History</span>
+            </h3>
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '14px'
+            }}>
+              {recentTrips.map((trip) => (
+                <div key={trip.id} style={{
+                  background: 'white',
+                  borderRadius: '12px',
+                  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+                  padding: '16px',
+                  border: '1px solid rgba(102, 126, 234, 0.15)',
+                  position: 'relative',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: '4px',
+                    background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                    borderRadius: '4px 0 0 4px'
+                  }}></div>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: '700',
+                      fontSize: '14px'
+                    }}>{trip.route}</div>
+                    
+                    <div>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontWeight: '600',
+                        fontSize: '1rem',
+                        color: '#333',
+                        marginBottom: '5px'
+                      }}>
+                        <span>{trip.from}</span>
+                        <span style={{ color: '#999' }}>→</span>
+                        <span>{trip.to}</span>
+                      </div>
+                      <div style={{
+                        fontSize: '0.85rem',
+                        color: '#666',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        <span>📅 {trip.date}</span>
+                        <span>⏰ {trip.time}</span>
+                      </div>
+                    </div>
                   </div>
+                  
+                  <div style={{
+                    background: 'rgba(102, 126, 234, 0.1)',
+                    padding: '6px 12px',
+                    borderRadius: '20px',
+                    fontWeight: '600',
+                    color: '#667eea',
+                    fontSize: '14px'
+                  }}>{trip.fare}</div>
                 </div>
-                <div className="trip-details">
-                  <p>{trip.date} • {trip.time}</p>
-                  <p className="trip-fare">{trip.fare}</p>
-                </div>
+              ))}
+            </div>
+
+            <div style={{
+              marginTop: '20px',
+              background: 'rgba(102, 126, 234, 0.05)',
+              padding: '15px',
+              borderRadius: '12px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <div>
+                <div style={{ fontSize: '14px', color: '#666', marginBottom: '5px' }}>This Month's Spending</div>
+                <div style={{ fontSize: '20px', fontWeight: '700', color: '#2c3e50' }}>₹115</div>
               </div>
-            ))}
+              
+              <button style={{
+                background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                color: 'white',
+                border: 'none',
+                padding: '10px 16px',
+                borderRadius: '8px',
+                fontWeight: '600',
+                fontSize: '14px',
+                cursor: 'pointer',
+              }}>
+                View All
+              </button>
+            </div>
           </div>
       </div>
     </div>
@@ -329,22 +627,71 @@ function SettingsPage() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>⚙️ Settings</h1>
       </div>
       <div className="page-content">
-        <div className="settings-list">
-          <div className="settings-section">
-            <h3>Notifications</h3>
-            <div className="settings-item">
-              <span>Bus Arrival Alerts</span>
+        <div className="profile-edit-section">
+          <h3 style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#2c3e50',
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            marginBottom: '1.2rem'
+          }}>
+            <span>🔔</span>
+            <span>Notifications</span>
+          </h3>
+          
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+            padding: '16px',
+            border: '1px solid rgba(102, 126, 234, 0.15)',
+            marginBottom: '10px'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Bus Arrival Alerts</span>
               <label className="toggle">
                 <input type="checkbox" defaultChecked />
                 <span className="slider"></span>
               </label>
             </div>
-            <div className="settings-item">
-              <span>Route Updates</span>
+            
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Route Updates</span>
               <label className="toggle">
                 <input type="checkbox" defaultChecked />
                 <span className="slider"></span>
@@ -352,19 +699,72 @@ function SettingsPage() {
             </div>
           </div>
           
-          <div className="settings-section">
-            <h3>Preferences</h3>
-            <div className="settings-item">
-              <span>Language</span>
-              <select className="settings-select">
+          <h3 style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#2c3e50',
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            margin: '1.5rem 0 1.2rem'
+          }}>
+            <span>🎨</span>
+            <span>Preferences</span>
+          </h3>
+          
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+            padding: '16px',
+            border: '1px solid rgba(102, 126, 234, 0.15)',
+            marginBottom: '10px'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Language</span>
+              <select style={{
+                background: 'white',
+                border: '1px solid #667eea',
+                borderRadius: '6px',
+                color: '#2c3e50',
+                padding: '6px 10px',
+                cursor: 'pointer',
+                outline: 'none'
+              }}>
                 <option>English</option>
                 <option>Telugu</option>
                 <option>Hindi</option>
               </select>
             </div>
-            <div className="settings-item">
-              <span>Theme</span>
-              <select className="settings-select">
+            
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Theme</span>
+              <select style={{
+                background: 'white',
+                border: '1px solid #667eea',
+                borderRadius: '6px',
+                color: '#2c3e50',
+                padding: '6px 10px',
+                cursor: 'pointer',
+                outline: 'none'
+              }}>
                 <option>Auto</option>
                 <option>Light</option>
                 <option>Dark</option>
@@ -372,19 +772,78 @@ function SettingsPage() {
             </div>
           </div>
           
-          <div className="settings-section">
-            <h3>Account</h3>
-            <div className="settings-item clickable">
-              <span>Change Password</span>
-              <span>→</span>
+          <h3 style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#2c3e50',
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            margin: '1.5rem 0 1.2rem'
+          }}>
+            <span>👤</span>
+            <span>Account</span>
+          </h3>
+          
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+            padding: '16px',
+            border: '1px solid rgba(102, 126, 234, 0.15)',
+            marginBottom: '10px'
+          }}>
+            <div className="clickable-setting" style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+              cursor: 'pointer'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Change Password</span>
+              <span style={{
+                color: '#667eea',
+                fontWeight: '700'
+              }}>→</span>
             </div>
-            <div className="settings-item clickable">
-              <span>Privacy Settings</span>
-              <span>→</span>
+            
+            <div className="clickable-setting" style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+              cursor: 'pointer'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#2c3e50'
+              }}>Privacy Settings</span>
+              <span style={{
+                color: '#667eea',
+                fontWeight: '700'
+              }}>→</span>
             </div>
-            <div className="settings-item clickable">
-              <span>Delete Account</span>
-              <span>→</span>
+            
+            <div className="clickable-setting" style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px 0',
+              cursor: 'pointer'
+            }}>
+              <span style={{ 
+                fontWeight: '500', 
+                color: '#ff4d4d'
+              }}>Delete Account</span>
+              <span style={{
+                color: '#ff4d4d',
+                fontWeight: '700'
+              }}>→</span>
             </div>
           </div>
         </div>
@@ -407,33 +866,151 @@ function HelpPage() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+        <button style={{
+          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          color: 'white',
+          border: 'none',
+          padding: '8px 15px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px'
+        }} onClick={() => navigate('/')}>← Back to Home</button>
         <h1>❓ Help & Support</h1>
       </div>
       <div className="page-content">
-        <div className="help-content">
-          <div className="help-section">
-            <h3>Frequently Asked Questions</h3>
+        <div className="profile-edit-section">
+          <h3 style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#2c3e50',
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            marginBottom: '1.2rem'
+          }}>
+            <span>🔍</span>
+            <span>Frequently Asked Questions</span>
+          </h3>
+          
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+            padding: '20px',
+            border: '1px solid rgba(102, 126, 234, 0.15)',
+            marginBottom: '20px'
+          }}>
             {faqItems.map((item, index) => (
-              <div key={index} className="faq-item">
-                <h4>{item.question}</h4>
-                <p>{item.answer}</p>
+              <div key={index} style={{
+                borderBottom: index < faqItems.length - 1 ? '1px solid rgba(0, 0, 0, 0.05)' : 'none',
+                paddingBottom: index < faqItems.length - 1 ? '12px' : '0',
+                marginBottom: index < faqItems.length - 1 ? '12px' : '0',
+              }}>
+                <h4 style={{
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  color: '#667eea',
+                  marginTop: '0',
+                  marginBottom: '8px'
+                }}>{item.question}</h4>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#4a5568',
+                  marginTop: '0',
+                  marginBottom: '0'
+                }}>{item.answer}</p>
               </div>
             ))}
           </div>
           
-          <div className="help-section">
-            <h3>Contact Support</h3>
-            <div className="contact-options">
-              <div className="contact-item">
-                <span>📞 Call: 040-2345-6789</span>
-              </div>
-              <div className="contact-item">
-                <span>📧 Email: support@tsrtc.gov.in</span>
-              </div>
-              <div className="contact-item">
-                <span>💬 Live Chat: Available 24/7</span>
-              </div>
+          <h3 style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#2c3e50',
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            margin: '1.5rem 0 1.2rem'
+          }}>
+            <span>📱</span>
+            <span>Contact Support</span>
+          </h3>
+          
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
+            padding: '20px',
+            border: '1px solid rgba(102, 126, 234, 0.15)',
+            marginBottom: '20px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '15px',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)'
+            }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: '700',
+                fontSize: '14px'
+              }}>📞</div>
+              <span style={{ fontWeight: '500', color: '#2c3e50' }}>Call: 040-2345-6789</span>
+            </div>
+            
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '15px',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(0, 0, 0, 0.05)'
+            }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: '700',
+                fontSize: '14px'
+              }}>📧</div>
+              <span style={{ fontWeight: '500', color: '#2c3e50' }}>Email: support@tsrtc.gov.in</span>
+            </div>
+            
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '15px',
+              padding: '10px 0'
+            }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: '700',
+                fontSize: '14px'
+              }}>💬</div>
+              <span style={{ fontWeight: '500', color: '#2c3e50' }}>Live Chat: Available 24/7</span>
             </div>
           </div>
         </div>
@@ -482,8 +1059,7 @@ function HomePage() {
       {/* Sidebar */}
       <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <img src="/logo.png" alt="TSRTC" className="sidebar-logo" />
-          <h2 className="gradient-text">Hyderabad TSRTC</h2>
+          <h2 style={{color: '#2c3e50', fontSize: '1.4rem', fontWeight: '700', marginBottom: '0.5rem'}}>Hyderabad TSRTC</h2>
           <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>×</button>
         </div>
         <div className="sidebar-menu">
@@ -519,9 +1095,22 @@ function HomePage() {
         {/* Header */}
         <div className="header">
           <button className="menu-btn" onClick={() => setSidebarOpen(true)}>☰</button>
-          <h1 className="gradient-text">Hyderabad TSRTC Bus Tracking</h1>
+          <h1 style={{color: '#34495e', fontSize: '1.8rem', fontWeight: '700', textAlign: 'center', flex: '1'}}>Hyderabad TSRTC Bus Tracking</h1>
           <div className="header-right">
-            <button className="profile-btn" onClick={() => setShowProfilePopup(true)}>👤</button>
+            <button style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #667eea, #764ba2)',
+              border: 'none',
+              color: 'white',
+              fontSize: '18px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1)'
+            }} onClick={() => setShowProfilePopup(true)}>👤</button>
           </div>
         </div>
 
@@ -591,7 +1180,7 @@ function HomePage() {
 
           {/* Quick Actions */}
           <div className="quick-actions">
-            <h2 className="gradient-text">Quick Actions</h2>
+            <h2 style={{color: '#fff', fontSize: '1.8rem', fontWeight: '700', marginBottom: '2rem', textAlign: 'center', textShadow: '0 1px 3px rgba(0,0,0,0.2)'}}>Quick Actions</h2>
             <div className="action-grid">
               <div className="action-card">
                 <div className="action-icon gradient-bg">🚌</div>
@@ -618,7 +1207,7 @@ function HomePage() {
 
           {/* Saved Routes */}
           <div className="saved-routes">
-            <h2 className="gradient-text">Saved Routes</h2>
+            <h2 style={{color: '#fff', fontSize: '1.8rem', fontWeight: '700', marginBottom: '2rem', textAlign: 'center', textShadow: '0 1px 3px rgba(0,0,0,0.2)'}}>Saved Routes</h2>
             <div className="route-list">
               <div className="route-item clickable" onClick={() => handleSavedRouteClick('5K', 'Secunderabad - HITEC City')}>
                 <div className="route-info">
@@ -655,7 +1244,7 @@ function HomePage() {
 
           {/* Recent Activity */}
           <div className="recent-activity">
-            <h2 className="gradient-text">Recent Activity</h2>
+            <h2 style={{color: '#fff', fontSize: '1.8rem', fontWeight: '700', marginBottom: '2rem', textAlign: 'center', textShadow: '0 1px 3px rgba(0,0,0,0.2)'}}>Recent Activity</h2>
             <div className="activity-list">
               <div className="activity-item">
                 <div className="activity-icon">🚌</div>
@@ -686,51 +1275,141 @@ function HomePage() {
       {/* Quick Profile Popup */}
       {showProfilePopup && (
         <div className="profile-modal-overlay" onClick={() => setShowProfilePopup(false)}>
-          <div className="profile-modal" onClick={(e) => e.stopPropagation()}>            
-            <div className="profile-modal-header">
-              <div className="profile-avatar">👤</div>
-              <h3>John Doe</h3>
-              <p>
-                <span>📱 +91 9876543210</span>
-                <span>📧 john.doe@email.com</span>
-              </p>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.98)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)',
+            borderRadius: '16px',
+            padding: '24px',
+            width: '340px',
+            maxHeight: '65vh',
+            overflow: 'auto',
+            boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
+            position: 'relative',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            margin: '20px'
+          }} onClick={(e) => e.stopPropagation()}>
+            
+            <button 
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                background: 'none',
+                border: 'none',
+                fontSize: '20px',
+                color: '#999',
+                cursor: 'pointer',
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onClick={() => setShowProfilePopup(false)}
+            >
+              ×
+            </button>
+
+            <div style={{
+              width: '70px',
+              height: '70px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #667eea, #764ba2)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '28px',
+              color: 'white',
+              margin: '5px auto 15px',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)'
+            }}>👤</div>
+            <h3 style={{margin: '0 0 18px', fontSize: '20px', textAlign: 'center'}}>John Doe</h3>
+            
+            <div style={{
+              background: 'rgba(102, 126, 234, 0.05)',
+              borderRadius: '12px',
+              padding: '16px',
+              marginBottom: '18px'
+            }}>
+              <p style={{margin: '5px 0', fontSize: '13px'}}><strong>📱 Phone:</strong> +91 9876543210</p>
+              <p style={{margin: '5px 0', fontSize: '13px'}}><strong>📧 Email:</strong> john.doe@email.com</p>
+              <p style={{margin: '5px 0', fontSize: '13px'}}><strong>🎫 Pass Status:</strong> <span style={{
+                background: '#4CAF50', 
+                color: 'white', 
+                padding: '2px 8px', 
+                borderRadius: '4px', 
+                fontSize: '11px', 
+                fontWeight: 'bold'
+              }}>Active</span></p>
             </div>
             
-            {/* Bus Pass Section */}
-            <div className="profile-bus-pass-mini">
-              <h4>🎫 Digital Bus Pass</h4>
-              <div className="bus-pass-info">
-                <div className="pass-details">
-                  <p><strong>Pass ID:</strong> SP2024001234</p>
-                  <p><strong>Valid Until:</strong> March 31, 2026</p>
-                  <p><strong>Used This Month:</strong> ₹480 / ₹2000</p>
+            {/* Bus Pass Section with QR */}
+            <div style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              borderRadius: '12px',
+              padding: '16px',
+              marginBottom: '18px',
+              color: 'white'
+            }}>
+              <h4 style={{color: 'white', margin: '0 0 8px 0', fontSize: '14px', fontWeight: '600'}}>🎫 Digital Bus Pass</h4>
+              <div style={{display: 'flex', justifyContent: 'space-between', gap: '10px'}}>
+                <div style={{flex: '1'}}>
+                  <p style={{margin: '3px 0', fontSize: '12px'}}><strong>Pass ID:</strong> SP2024001234</p>
+                  <p style={{margin: '3px 0', fontSize: '12px'}}><strong>Valid Until:</strong> Mar 31, 2026</p>
+                  <p style={{margin: '3px 0', fontSize: '12px'}}><strong>Used:</strong> ₹480 / ₹2000</p>
                 </div>
-                <div className="pass-qr-mini">
-                  <div style={{fontSize: '20px', lineHeight: '1'}}>⬛⬜⬛</div>
-                  <div style={{fontSize: '20px', lineHeight: '1'}}>⬜⬛⬜</div>
-                  <div style={{fontSize: '20px', lineHeight: '1'}}>⬛⬜⬛</div>
-                  <small style={{marginTop: '5px', fontSize: '11px', opacity: 0.8}}>Show to conductor</small>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  background: 'white',
+                  padding: '5px',
+                  borderRadius: '6px',
+                  minWidth: '60px',
+                  height: 'fit-content'
+                }}>
+                  <div style={{fontSize: '10px', lineHeight: '1', fontFamily: 'monospace', letterSpacing: '-2px', color: 'black'}}>
+                    <div>▪▫▪▫▪▫▪</div>
+                    <div>▫▪▫▪▫▪▫</div>
+                    <div>▪▫▪▫▪▫▪</div>
+                    <div>▫▪▫▪▫▪▫</div>
+                    <div>▪▫▪▫▪▫▪</div>
+                  </div>
+                  <small style={{fontSize: '8px', color: '#666', textAlign: 'center'}}>Show to conductor</small>
                 </div>
               </div>
             </div>
             
             {/* Quick Stats */}
-            <div className="profile-quick-stats">
-              <div className="quick-stat-item">
-                <strong>24</strong>
-                <span>Trips This Month</span>
+            <div style={{display: 'flex', justifyContent: 'space-around', margin: '10px 0', padding: '12px', background: 'rgba(102, 126, 234, 0.08)', borderRadius: '12px', marginBottom: '18px'}}>
+              <div style={{textAlign: 'center'}}>
+                <div style={{fontSize: '18px', fontWeight: '700', color: '#667eea'}}>24</div>
+                <div style={{fontSize: '11px', color: '#666'}}>Trips</div>
               </div>
-              <div className="quick-stat-item">
-                <strong>₹480</strong>
-                <span>Amount Spent</span>
+              <div style={{textAlign: 'center'}}>
+                <div style={{fontSize: '18px', fontWeight: '700', color: '#667eea'}}>₹480</div>
+                <div style={{fontSize: '11px', color: '#666'}}>Spent</div>
               </div>
             </div>
             
-            <div className="profile-modal-actions">
-              <button className="profile-modal-btn primary" onClick={() => { setShowProfilePopup(false); navigate('/profile'); }}>
-                View Full Profile
-              </button>
-            </div>
+            <button style={{
+              background: 'linear-gradient(45deg, #667eea, #764ba2)',
+              color: 'white',
+              border: 'none',
+              padding: '14px 0',
+              borderRadius: '10px',
+              fontWeight: '600',
+              fontSize: '15px',
+              width: '100%',
+              marginTop: '5px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(102, 126, 234, 0.3)',
+              transition: 'transform 0.2s ease-in-out'
+            }} onClick={() => { setShowProfilePopup(false); navigate('/profile'); }}>
+              View Full Profile
+            </button>
           </div>
         </div>
       )}
